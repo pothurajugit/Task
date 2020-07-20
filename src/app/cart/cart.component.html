@@ -24,12 +24,12 @@
 
 <!-- Cart area start -->
 <div class="container">
-<section style="margin-top: 202px; margin-bottom: 178px;">
+<section style="margin-top: 202px; margin-bottom: 221px;">
   <div class="row">
     <div class="col-sm-8">
         <div class="card ">
             <div class="card-header"><h6 class="font-weight-bold">My Cart</h6></div>
-            <div class="card-body">
+            <div class="card-body table-responsive">
                 <table class="table table-bordered text-center">
                     <thead>
                         <th>Image</th>
@@ -38,28 +38,28 @@
                         <th>Quantity</th>
                         <th>Total</th>
                     </thead>
-                    <tr *ngFor =  "let array of productinformation">
-                        <td><img [src]="array.img" alt="" style="height: 50px;"></td>
-                        <td>{{array.name}}</td>
-                        <td style="color: green; font-weight: 700;">₹ {{array.price}}</td>
+                    <tr *ngFor = "let items of allorders; let i=index">
+                        <td><img [src]="items.imgurl" alt="" style="height: 50px;"></td>
+                        <td>{{items.description}}</td>
+                        <td style="color: green; font-weight: 700;"> ₹{{items.price}}</td>
                         <td>
                           <tr>
-                            <td><button type="button" class="btn btn-danger  font-weight-bold" (click)="remove()">-</button></td>
-                            <td>{{counter}}</td>
-                            <td><button type="button" class="btn btn-primary  font-weight-bold" (click)="add()">+</button></td>
+                            <td><button type="button" class="btn btn-danger  font-weight-bold" (click)=remove(items)>-</button></td>
+                            <td>{{items.quantity}}</td>
+                            <td><button type="button" class="btn btn-primary  font-weight-bold" (click)="add(items)">+</button></td>
                           </tr>
                         </td>
-                        <td style="font-weight: bold; color: rgb(19, 78, 19);">₹ {{total}}</td>
+                        <td style="font-weight: bold; color: rgb(19, 78, 19);"> ₹{{items.price * items.quantity}}</td>
                     </tr>
                 </table>
             </div>
-            <div class="card-footer" style="background-color: white;"><button class="btn btn-danger btn-lg rounded-0 float-right" (click)="addtotal()">Add Total</button></div>
+            <!-- <div class="card-footer" style="background-color: white;"><button class="btn btn-danger btn-lg rounded-0 float-right">Add Total</button></div> -->
         </div>
     </div>
     <div class="col-sm-4">
         <div class="card">
             <div class="card-header"><h6 class="font-weight-bold">Price Details</h6></div>
-            <div class="card-body">Total Price:{{alltotal}}</div>
+            <div class="card-body" style="color: green; font-weight: bold;">Total Price:₹ {{cartTotal}}</div>
             <div class="card-footer" style="background-color: white;"><button class="btn btn-danger btn-lg rounded-0 float-right">Buy Now</button></div>
         </div>
     </div>

@@ -27,71 +27,42 @@
 
       <!-- Products area start -->
       <div class="cotainer-fluid p-0 m-0">
-        <img src="../assets/images/ppp.jpg" alt="Welcome" class="img-fluid mt-5" width="100%" style="height: 470px;">
+        <img src="../../assets/images/p.jpg" alt="Welcome" class="img-fluid mt-5" width="100%" style="height: 450px;">
       </div>
-      <div class="container">
+
+      <!-- <div class="container">
+              <div *ngFor = "let product of productslist">
+                <app-productlist [pl]="product"></app-productlist>
+              </div>
+      </div> -->
+
+            <div class="container">
           <h2 class="mt-5 text-center tect-danger font-weight-bold line">Products</h2>
-        <div class="row mb-5">
-            <div class="col-sm-4">
-                <div class="card-shadow">
-                    <div class="row">
-                        <div class="col-sm-4">
-                            <img src="https://rukminim1.flixcart.com/image/312/312/k1fbmvk0/mobile/g/y/q/mi-redmi-8-mzb8253in-original-imafhyacjwjwxmsx.jpeg?q=70" alt="">
-                        </div>
-                        <div class="col-sm-8">
-                            <ul style="list-style-type: none;">
-                                <li class="font-weight-bolder"><p>Redmi 8 (Blue, 64 GB)  (4 GB RAM)</p></li>
-                                <li><p style="color: green; font-weight: 600;">Extra ₹1200 discount</p></li>
-                                <li>Price: ₹9,799  &nbsp; <del>₹10,999</del> </li>
-                                <li><p style="color: green; font-weight: 600;">10 % offer</p></li>
-                                <li> <button type="submit" class="btn btn-danger rounded-0" (click)="Addtocart()">Add to Cart</button>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+<section style="margin-top: 60px; margin-bottom: 60px;">
+  <div class="row mb-5"> 
+    <div class="col-sm-4 mb-5" *ngFor="let pp of productslist; let i=index">
+        <div class="card-shadow">
+            <div class="row">
+                <div class="col-sm-4">
+                    <img [src]="pp.imgurl" alt="">
+                </div>
+                <div class="col-sm-8">
+                    <ul style="list-style-type: none;">
+                        <li class="font-weight-bolder"><p>{{pp.description}}</p></li>
+                        <li><p style="color: green; font-weight: 600;">Extra ₹1200 discount</p></li>
+                        <li>Price: ₹{{pp.price}}  &nbsp; </li>
+                        <li><p style="color: green; font-weight: 600;">{{pp.offer}}</p></li>
+                        <li> <button type="submit" class="btn btn-danger rounded-0" (click)="addtoCart(pp)">Add to Cart</button>
+                        </li>
+                    </ul>
                 </div>
             </div>
-            <div class="col-sm-4">
-                <div class="card-shadow">
-                    <div class="row">
-                        <div class="col-sm-4">
-                            <img src="https://rukminim1.flixcart.com/image/312/312/k8ddoy80/mobile/n/m/w/realme-narzo-10-rmx2040-original-imafqectbhfgxutg.jpeg?q=70" alt="">
-                        </div>
-                        <div class="col-sm-8">
-                            <ul style="list-style-type: none;">
-                                <li class="font-weight-bolder"><p>Redmi 10 (Red,64 GB)  (4 GB RAM)</p></li>
-                                <li><p style="color: green; font-weight: 600;">Extra ₹1000 discount</p></li>
-                                <li>Price: ₹11,999  &nbsp; <del>₹12,999</del> </li>
-                                <li><p style="color: green; font-weight: 600;">7 % offer</p></li>
-                                <li> <button type="submit" class="btn btn-danger rounded-0">Add to Cart</button></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="card-shadow">
-                    <div class="row">
-                        <div class="col-sm-4">
-                            <img src="https://rukminim1.flixcart.com/image/312/312/k87nxjk0/mobile/m/f/k/redmi-note-8-pro-mzb8314in-original-imafqaf3mak86q8e.jpeg?q=70" alt="">
-                        </div>
-                        <div class="col-sm-8">
-                            <ul style="list-style-type: none;">
-                                <li class="font-weight-bolder"><p>Redmi 8 Pro (Blue,64 GB)  (4 GB RAM)</p></li>
-                                <li><p style="color: green; font-weight: 600;">Extra ₹1000 discount</p></li>
-                                <li>Price: ₹16,999  &nbsp; <del>₹17,999</del> </li>
-                                <li><p style="color: green; font-weight: 600;">5 % offer</p></li>
-                                <li> <button type="submit" class="btn btn-danger rounded-0">Add to Cart</button></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>  
+        </div>
+    </div>
+</div> 
+</section>  
     </div>
       <!-- Products area end -->
-
-
       <!-- Footer -->
       <div>
         <footer class="py-2 bg-info">

@@ -7,40 +7,49 @@ import { CartdataService } from '../cartdata.service';
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent implements OnInit {
-  counter:any = 1;
-  total:any = 9799;
-  alltotal:any;
-  constructor(private cartservice1:CartdataService) { }
 
-  productinformation:any[] = [];
+  constructor(private datafromservice: CartdataService) { }
+
+  allorders:any;
+  cartTotal:any = 0;
+  removeItems:any[] = [];
   ngOnInit(){
-    // this.cartservice1.getMessage().subscribe((productdata)=>{
-    //   console.log(`data is ${productdata}`);
-    this.productinformation = this.cartservice1.datafromsorder;
-    console.log(this.productinformation);
+
+    //subscribe 
+    // this.datafromservice.getData().subscribe((productdata) =>{
+    //   console.log(productdata);
+    // });
+
+
+    this.allorders = this.datafromservice.orderitems;
+    //console.log(this.allorders);
+    
+    //Total price
+    this.allorders.forEach(item => {
+      this.cartTotal = this.cartTotal +(item.quantity * item.price)
+    });
+    //console.log(this.cartTotal);
     }
 
-    //add item
-    add(){
-      this.counter ++;
-      this.total = this.counter * 9799;
+    
+
+    //Add
+    add(item){
+      //console.log(item);
+      item.quantity ++;
+
+      this.cartTotal = this.cartTotal + item.price;
     }
 
-    //remove item
-    remove(){
-      if(this.counter <= 0){
-        alert("Cart is empty");
+    //remove
+    remove(item){
+      if(item.quantity == 0){
+        alert('Item is empty');
         return false;
       }
-      this.counter --;
-      this.total = this.total - 9799;
+      item.quantity --;
+      this.cartTotal = this.cartTotal - item.price;
     }
-
-    //add total
-    addtotal(){
-      this.alltotal = this.total;
-    }
-
   }
 
 
